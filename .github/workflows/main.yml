@@ -6,16 +6,15 @@ jobs:
   deploy:
     runs-on: instance-homepage
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: deploy ktt
-        uses: appleboy/ssh-action@master
+        uses: invi5H/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.REMOTE_SSH_HOST }}
-          username: ${{ secrets.REMOTE_SSH_USERNAME }}
-          key: ${{ secrets.REMOTE_SSH_KEY }}
-          passphrase: ${{ secrets.REMOTE_SSH_PASSPHRASE }}
-          port: ${{ secrets.REMOTE_SSH_PORT }}
+          SSH_HOST: ${{ secrets.REMOTE_SSH_HOST }}
+          SSH_USER: ${{ secrets.REMOTE_SSH_USERNAME }}
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             whoami
             cd /home/ubuntu/homepage/ktt
