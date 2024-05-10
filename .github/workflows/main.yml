@@ -9,12 +9,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: deploy ktt
-        uses: invi5H/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v1
         with:
-          SSH_HOST: ${{ secrets.REMOTE_SSH_HOST }}
-          SSH_USER: ${{ secrets.REMOTE_SSH_USERNAME }}
-          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_PORT: ${{ secrets.REMOTE_SSH_PORT }}
+          host: ${{ secrets.REMOTE_SSH_HOST }}
+          username: ${{ secrets.REMOTE_SSH_USERNAME }}
+          passphrase: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             whoami
             cd /home/ubuntu/homepage/ktt
