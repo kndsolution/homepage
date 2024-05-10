@@ -18,6 +18,7 @@ jobs:
           script: |
             whoami
             cd /home/ubuntu/homepage/ktt
-            git pull origin deploy
+            git branch
+            git pull 
             npm install
             # nohup npm run dev
