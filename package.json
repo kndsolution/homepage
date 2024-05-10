@@ -4,7 +4,7 @@
   "version": "5.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
@@ -12,7 +12,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "next",
-    "@mui/material": "next",
+    "@mui/material": "^6.0.0-alpha.6",
     "react": "latest",
     "react-dom": "latest"
   },
