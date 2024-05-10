@@ -1,0 +1,24 @@
+name: frontend CD
+on:
+  push:
+    branches: ['deploy']
+jobs:
+  deploy:
+    runs-on: instance-homepage
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: deploy ktt
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_SSH_HOST }}
+          username: ${{ secrets.REMOTE_SSH_USERNAME }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          passphrase: ${{ secrets.REMOTE_SSH_PASSPHRASE }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            whoami
+            cd /home/ubuntu/homepage/ktt
+            git pull origin deploy
+            npm install
+            # nohup npm run dev
