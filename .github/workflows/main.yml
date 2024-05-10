@@ -1,0 +1,23 @@
+name: frontend CD
+on:
+  push:
+    branches: ['deploy']
+jobs:
+  deploy:
+    runs-on: instance-homepage
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: deploy ktt
+        uses: invi5H/ssh-action@v1.0.0
+        with:
+          SSH_HOST: ${{ secrets.REMOTE_SSH_HOST }}
+          SSH_USER: ${{ secrets.REMOTE_SSH_USERNAME }}
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            whoami
+            cd /home/ubuntu/homepage/ktt
+            git pull origin deploy
+            npm install
+            # nohup npm run dev
