@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: deploy ktt
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.REMOTE_SSH_HOST }}
           username: ${{ secrets.REMOTE_SSH_USERNAME }}
